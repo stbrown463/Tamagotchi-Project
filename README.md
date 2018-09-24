@@ -12,7 +12,11 @@ Let's use our front-end web development skills to create a "living" pet! We'll u
 * Create a Class (JS Class, look at your notes if your forget) for your tomagotchi
 * Instatiate your Tomagotchi
 * Display a character of your choice on the screen to represent your pet
-* Display the following metrics for your pet. Hunger (1-10 scale), Sleepiness (1-10 scale), Boredom (1-10 scale), Age
+* Display the following metrics for your pet: 
+ * Hunger (1-10 scale)
+ * Sleepiness (1-10 scale)
+ * Boredom (1-10 scale)
+ * Age
 * Add buttons to the screen to feed your pet, turn off the lights, and play with your pet.
 * Add the ability to name your pet.
 * Style the page.
