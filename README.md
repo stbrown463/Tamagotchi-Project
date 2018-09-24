@@ -5,8 +5,6 @@
 
 Let's use our front-end web development skills to create a "living" pet! We'll use HTML, CSS, and JavaScript/jQuery to interact with our pet.
 
-![tomagotchi image](https://images-na.ssl-images-amazon.com/images/I/61DQ-%2BAZCwL._SX466_.jpg)
-
 ### Requirements
   
 * Create a repo for your tomagotchi pet
