@@ -1,3 +1,45 @@
 body {
 	background-color: lightblue;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+#tamaBody {
+	height: 60vh;
+	width: 50vh;
+	border-radius: 30%;
+	background-color: purple;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+#screen {
+	height: 30vh;
+	width: 30vh;
+	background-color: lightyellow;
+}
+
+#buttonRow {
+	height: 5vh;
+	width: 25vh;
+	/*background-color: green;*/
+	margin-top: 5vh;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.button {
+	height: 5vh;
+	width: 5vh;
+	background-color: yellow;
+	border-radius: 40%;
+}
+
+h1 {
+	font-size: 25px;
 }
