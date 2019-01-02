@@ -21,6 +21,23 @@ body {
 	height: 30vh;
 	width: 30vh;
 	background-color: lightyellow;
+	display: flex;
+	flex-direction: column;
+}
+
+#sprite {
+	height: 25vh;
+	width: 30vh;
+	/*background-color: blue;*/
+}
+
+#uiRow {
+	height: 5vh;
+	width: 30vh;
+	background-color: green;
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-around;
 }
 
 #buttonRow {
@@ -43,3 +60,24 @@ body {
 h1 {
 	font-size: 25px;
 }
+
+h3 {
+	font-size: 12px;
+	text-align: center;
+	margin: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
