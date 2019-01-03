@@ -10,8 +10,12 @@ class Tamagotchi {
 		this.age = age;
 		this.name = name;
 		this.isDead = isDead;
+
 	}
 	feed () {
+		if (this.isDead) {
+			return
+		}
 		this.hunger -= 3;
 		if (this.hunger < 0) {
 			this.hunger = 0;
@@ -19,6 +23,9 @@ class Tamagotchi {
 		game.render();
 	}
 	sleep () {
+		if (this.isDead) {
+			return
+		}
 		this.sleepiness -= 3;
 		if (this.sleepiness < 0) {
 			this.sleepiness = 0;
@@ -26,6 +33,9 @@ class Tamagotchi {
 		game.render();
 	}
 	play () {
+		if (this.isDead) {
+			return
+		}
 		this.boredom -= 3;
 		if (this.boredom < 0) {
 			this.boredom = 0;
@@ -76,7 +86,8 @@ const game = {
 	},
 	startTimer () {
 		this.timer = setInterval(() => {
-		game.pet.birthday()
+			game.pet.birthday()
+
 		}, 1000);
 	},
 	changeSprite () {
@@ -155,7 +166,7 @@ $('form').on('submit', (e) => {
 
 $('#buttonRow').on('click', (e) => {
 
-	if (game.pet === null || e.target.id === 'buttonRow' || game.pet.hunger === 10 || game.pet.sleepiness === 10 || game.pet.boredom === 10) {
+	if (game.pet === null || e.target.id === 'buttonRow') {
 		return
 	}
 	if (e.target.id === 'feed') {
