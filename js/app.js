@@ -18,7 +18,7 @@ class Tamagotchi {
 		$uiRow.append($boredomDisp);
 		const $ageDisp = $('<h3 id="ageDisp"></h3>')
 		$uiRow.append($ageDisp);
-		$('#sprite').append('<img src="tama-sprites/Babytchi_anim_gen1.gif">');	
+		$('#display').append('<img src="tama-sprites/Babytchi_anim_gen1.gif" id="sprite">');	
 		this.render();
 	} 
 	render () {
@@ -63,7 +63,7 @@ class Tamagotchi {
 		const $deathText = $('<h2 id="deathText"></h2>').text("YOU DIED")
 		if (this.hunger === 10 || this.sleepiness === 10 || this.boredom === 10) {
 			$('img').remove();
-			$('#sprite').prepend($deathText);
+			$('#display').prepend($deathText);
 			clearInterval(game.timer);
 		}
 	}
@@ -82,46 +82,46 @@ const game = {
 	},
 	changeSprite () {
 		if (myPet.age === 5) {
-			$('img').attr('src', 'tama-sprites/Marutchi_anim_gen1.gif');
+			$('#sprite').attr('src', 'tama-sprites/Marutchi_anim_gen1.gif');
 		} 
 		if (myPet.age === 12 ) {
 			if (myPet.hunger >=4 || myPet.sleepiness >= 3 || myPet.boredom >= 3) {
-				$('img').attr('src', 'tama-sprites/Kuchitamatchi_anim_gen1.gif');
+				$('#sprite').attr('src', 'tama-sprites/Kuchitamatchi_anim_gen1.gif');
 			} else {
-				$('img').attr('src', 'tama-sprites/Tamatchi_anim_gen1.gif');
+				$('#sprite').attr('src', 'tama-sprites/Tamatchi_anim_gen1.gif');
 			}
 		}
 		if (myPet.age === 20) {
-			if ($('img').attr('src') === 'tama-sprites/Tamatchi_anim_gen1.gif') {
+			if ($('#sprite').attr('src') === 'tama-sprites/Tamatchi_anim_gen1.gif') {
 				if (myPet.hunger > 8 || myPet.sleepiness > 8 || myPet.boredom > 8) {
-					$('img').attr('src', 'tama-sprites/Tarakotchi_anim_gen1.gif')
+					$('#sprite').attr('src', 'tama-sprites/Tarakotchi_anim_gen1.gif')
 				} else if (myPet.hunger > 7 || myPet.sleepiness > 7 || myPet.boredom > 7) {
-					$('img').attr('src', 'tama-sprites/Nyorotchi_anim_gen1.gif');
+					$('#sprite').attr('src', 'tama-sprites/Nyorotchi_anim_gen1.gif');
 				} else if (myPet.hunger > 5 || myPet.sleepiness > 5 || myPet.boredom > 5) {
-					$('img').attr('src', 'tama-sprites/Kuchipatchi_anim_gen1.gif');
+					$('#sprite').attr('src', 'tama-sprites/Kuchipatchi_anim_gen1.gif');
 				} else if (myPet.hunger > 4 || myPet.sleepiness > 4 || myPet.boredom > 4) {
-					$('img').attr('src', 'tama-sprites/Maskutchi_anim_gen1.gif');
+					$('#sprite').attr('src', 'tama-sprites/Maskutchi_anim_gen1.gif');
 				} else if (myPet.hunger > 2 || myPet.sleepiness > 2 || myPet.boredom > 2) {
-					$('img').attr('src', 'tama-sprites/Ginjirotchi_anim_gen1.gif');
+					$('#sprite').attr('src', 'tama-sprites/Ginjirotchi_anim_gen1.gif');
 				} else {
-					$('img').attr('src', 'tama-sprites/Mametchi_anim_gen1.gif');
+					$('#sprite').attr('src', 'tama-sprites/Mametchi_anim_gen1.gif');
 				}
 			} 
 			else {
 				if (myPet.hunger > 8 || myPet.sleepiness > 8 || myPet.boredom > 8) {
-					$('img').attr('src', 'tama-sprites/Tarakotchi_anim_gen1.gif')
+					$('#sprite').attr('src', 'tama-sprites/Tarakotchi_anim_gen1.gif')
 				} else if (myPet.hunger > 2 || myPet.sleepiness > 2 || myPet.boredom > 2) {
-					$('img').attr('src', 'tama-sprites/Nyorotchi_anim_gen1.gif');
+					$('#sprite').attr('src', 'tama-sprites/Nyorotchi_anim_gen1.gif');
 				} else {
-					$('img').attr('src', 'tama-sprites/Kuchipatchi_anim_gen1.gif');
+					$('#sprite').attr('src', 'tama-sprites/Kuchipatchi_anim_gen1.gif');
 				}
 			}
 		} if (myPet.age === 30) {
-			$('img').attr('src', 'tama-sprites/Bill_anim_gen1.gif');
+			$('#sprite').attr('src', 'tama-sprites/Bill_anim_gen1.gif');
 		}
 	},
-	someMethod () {
-
+	animateSprite () {
+		
 	}
 }
 
