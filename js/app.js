@@ -50,7 +50,7 @@ class Tamagotchi {
 	checkHealth () {
 		const $deathText = $('<h2 id="deathText"></h2>').text("You Died")
 		if (this.hunger === 10 || this.sleepiness === 10 || this.boredom === 10) {
-			$('#sprite').append($deathText);
+			$('#sprite').prepend($deathText);
 			clearInterval(game.timer);
 		}
 	}
@@ -67,7 +67,6 @@ const game = {
 	reset () {
 
 	}
-
 }
 
 $('#buttonRow').on('click', (e) => {
@@ -85,7 +84,9 @@ $('#buttonRow').on('click', (e) => {
 	}
 })
 
-
+// const baby = new Image();
+// baby.src = '../tama-sprites/Babytchi_anim_gen1.gif';
+$('#sprite').append('<img src="tama-sprites/Babytchi_anim_gen1.gif">');
 
 
 
