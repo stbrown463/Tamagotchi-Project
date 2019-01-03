@@ -56,7 +56,6 @@ class Tamagotchi {
 
 const game = {
 	pet: null,
-
 	init () {
 		const $hungerDisp = $('<h3 id="hungerDisp"></h3>')
 		$uiRow.append($hungerDisp);
