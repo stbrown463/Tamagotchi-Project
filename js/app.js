@@ -3,12 +3,60 @@ console.log('the page is loaded');
 const $uiRow = $('#uiRow')
 
 class Tamagotchi {
-	constructor(hunger, sleepiness, boredom, age) {
+	constructor(hunger, sleepiness, boredom, age, name, isDead) {
 		this.hunger = hunger;
 		this.sleepiness = sleepiness;
 		this.boredom = boredom;
 		this.age = age;
+		this.name = name;
+		this.isDead = isDead;
 	}
+	feed () {
+		this.hunger -= 3;
+		if (this.hunger < 0) {
+			this.hunger = 0;
+		}
+		game.render();
+	}
+	sleep () {
+		this.sleepiness -= 3;
+		if (this.sleepiness < 0) {
+			this.sleepiness = 0;
+		}
+		game.render();
+	}
+	play () {
+		this.boredom -= 3;
+		if (this.boredom < 0) {
+			this.boredom = 0;
+		}
+		game.render();
+	}
+	birthday () {
+		this.age++;
+		game.changeSprite();
+		this.hunger++;
+		this.boredom++;
+		this.sleepiness++;
+		this.checkHealth();
+		game.render();
+
+	}
+	checkHealth () {
+		const $deathText = $('<h2 id="deathText"></h2>').text(this.name + " DIED")
+		if (this.hunger === 10 || this.sleepiness === 10 || this.boredom === 10) {
+			$('#sprite').remove();
+			$('#display').prepend($deathText);
+			clearInterval(game.timer);
+			this.isDead = true;
+		}
+	}
+}
+
+
+const game = {
+	pet: null,
+
 	init () {
 		const $hungerDisp = $('<h3 id="hungerDisp"></h3>')
 		$uiRow.append($hungerDisp);
@@ -20,129 +68,109 @@ class Tamagotchi {
 		$uiRow.append($ageDisp);
 		$('#display').append('<img src="tama-sprites/Babytchi_anim_gen1.gif" id="sprite">');	
 		this.render();
-	} 
+	}, 
 	render () {
-		$('#hungerDisp').text(`Hunger: ${this.hunger}`);
-		$('#sleepinessDisp').text(`Sleepiness: ${this.sleepiness}`);
-		$('#boredomDisp').text(`Boredom: ${this.boredom}`);
-		$('#ageDisp').text(`Age: ${this.age}`);
-		
-	}
-	feed () {
-		this.hunger -= 3;
-		if (this.hunger < 0) {
-			this.hunger = 0;
-		}
-		this.render();
-	}
-	sleep () {
-		this.sleepiness -= 3;
-		if (this.sleepiness < 0) {
-			this.sleepiness = 0;
-		}
-		this.render();
-	}
-	play () {
-		this.boredom -= 3;
-		if (this.boredom < 0) {
-			this.boredom = 0;
-		}
-		this.render();
-	}
-	birthday () {
-		this.age++;
-		game.changeSprite();
-		this.hunger++;
-		this.boredom++;
-		this.sleepiness++;
-		this.checkHealth();
-		this.render();
-
-	}
-	checkHealth () {
-		const $deathText = $('<h2 id="deathText"></h2>').text("YOU DIED")
-		if (this.hunger === 10 || this.sleepiness === 10 || this.boredom === 10) {
-			$('img').remove();
-			$('#display').prepend($deathText);
-			clearInterval(game.timer);
-		}
-	}
-}
-
-const myPet = new Tamagotchi(0, 0, 0, 0);
-
-myPet.init()
-
-const game = {
-	timer: setInterval(() => {
-		myPet.birthday()
-	}, 1000),
-	reset () {
-
+		$('#hungerDisp').text(`Hunger ${this.pet.hunger}`);
+		$('#sleepinessDisp').text(`Sleepiness ${this.pet.sleepiness}`);
+		$('#boredomDisp').text(`Boredom ${this.pet.boredom}`);
+		$('#ageDisp').text(`Age ${this.pet.age}`);		
+	},
+	startTimer () {
+		this.timer = setInterval(() => {
+		game.pet.birthday()
+		}, 1000);
 	},
 	changeSprite () {
-		if (myPet.age === 5) {
+		if (this.pet.age === 5) {
 			$('#sprite').attr('src', 'tama-sprites/Marutchi_anim_gen1.gif');
 		} 
-		if (myPet.age === 12 ) {
-			if (myPet.hunger >=4 || myPet.sleepiness >= 3 || myPet.boredom >= 3) {
+		if (this.pet.age === 12 ) {
+			if (this.pet.hunger >=4 || this.pet.sleepiness >= 3 || this.pet.boredom >= 3) {
 				$('#sprite').attr('src', 'tama-sprites/Kuchitamatchi_anim_gen1.gif');
 			} else {
 				$('#sprite').attr('src', 'tama-sprites/Tamatchi_anim_gen1.gif');
 			}
 		}
-		if (myPet.age === 20) {
+		if (this.pet.age === 20) {
 			if ($('#sprite').attr('src') === 'tama-sprites/Tamatchi_anim_gen1.gif') {
-				if (myPet.hunger > 8 || myPet.sleepiness > 8 || myPet.boredom > 8) {
+				if (this.pet.hunger > 8 || this.pet.sleepiness > 8 || this.pet.boredom > 8) {
 					$('#sprite').attr('src', 'tama-sprites/Tarakotchi_anim_gen1.gif')
-				} else if (myPet.hunger > 7 || myPet.sleepiness > 7 || myPet.boredom > 7) {
+				} else if (this.pet.hunger > 7 || this.pet.sleepiness > 7 || this.pet.boredom > 7) {
 					$('#sprite').attr('src', 'tama-sprites/Nyorotchi_anim_gen1.gif');
-				} else if (myPet.hunger > 5 || myPet.sleepiness > 5 || myPet.boredom > 5) {
+				} else if (this.pet.hunger > 5 || this.pet.sleepiness > 5 || this.pet.boredom > 5) {
 					$('#sprite').attr('src', 'tama-sprites/Kuchipatchi_anim_gen1.gif');
-				} else if (myPet.hunger > 4 || myPet.sleepiness > 4 || myPet.boredom > 4) {
+				} else if (this.pet.hunger > 4 || this.pet.sleepiness > 4 || this.pet.boredom > 4) {
 					$('#sprite').attr('src', 'tama-sprites/Maskutchi_anim_gen1.gif');
-				} else if (myPet.hunger > 2 || myPet.sleepiness > 2 || myPet.boredom > 2) {
+				} else if (this.pet.hunger > 2 || this.pet.sleepiness > 2 || this.pet.boredom > 2) {
 					$('#sprite').attr('src', 'tama-sprites/Ginjirotchi_anim_gen1.gif');
 				} else {
 					$('#sprite').attr('src', 'tama-sprites/Mametchi_anim_gen1.gif');
 				}
 			} 
 			else {
-				if (myPet.hunger > 8 || myPet.sleepiness > 8 || myPet.boredom > 8) {
+				if (this.pet.hunger > 8 || this.pet.sleepiness > 8 || this.pet.boredom > 8) {
 					$('#sprite').attr('src', 'tama-sprites/Tarakotchi_anim_gen1.gif')
-				} else if (myPet.hunger > 2 || myPet.sleepiness > 2 || myPet.boredom > 2) {
+				} else if (this.pet.hunger > 2 || this.pet.sleepiness > 2 || this.pet.boredom > 2) {
 					$('#sprite').attr('src', 'tama-sprites/Nyorotchi_anim_gen1.gif');
 				} else {
 					$('#sprite').attr('src', 'tama-sprites/Kuchipatchi_anim_gen1.gif');
 				}
 			}
-		} if (myPet.age === 30) {
+		} if (this.pet.age === 100) {
 			$('#sprite').attr('src', 'tama-sprites/Bill_anim_gen1.gif');
 		}
 	},
 	animateSprite () {
-		
+
+	},
+	createPet (name) {
+		this.pet = new Tamagotchi(0, 0, 0, 0, name, false)
+		if (this.pet.isDead) {
+			console.log('your pet is dead');
+			this.restart()
+		} else {
+			this.init()
+		}
+	},
+	reset () {
+		$('#deathText').remove();
+		$('#hungerDisp').remove();
+		$('#boredomDisp').remove();
+		$('#ageDisp').remove();
+		$('#sleepinessDisp').remove();
+		$('#sprite').remove();
 	}
+
 }
 
+$('form').on('submit', (e) => {
+	e.preventDefault();
+	const value = $("input[name='tamaName']").val();
+	if (game.pet != null) {
+		game.reset()
+	}
+	game.createPet(value);
+	game.startTimer();
+	$("input[name='tamaName']").val('');
+})
+
 $('#buttonRow').on('click', (e) => {
-	if (e.target.id === 'buttonRow') {
+
+	if (game.pet === null || e.target.id === 'buttonRow' || game.pet.hunger === 10 || game.pet.sleepiness === 10 || game.pet.boredom === 10) {
 		return
 	}
 	if (e.target.id === 'feed') {
-		myPet.feed();
+		game.pet.feed();
 	}
 	if (e.target.id === 'lights') {
-		myPet.sleep();
+		game.pet.sleep();
 	}
 	if (e.target.id === 'play') {
-		myPet.play();
+		game.pet.play();
 	}
 })
 
-// const baby = new Image();
-// baby.src = '../tama-sprites/Babytchi_anim_gen1.gif';
-// $('#sprite').append('<img src="tama-sprites/Babytchi_anim_gen1.gif">');
+
 
 
 
