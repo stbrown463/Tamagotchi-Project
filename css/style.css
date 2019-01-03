@@ -1,5 +1,5 @@
 body {
-	background-color: lightblue;
+	background-color: black;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -8,26 +8,33 @@ body {
 }
 
 input {
-	margin-bottom: 10vh;
+	/*margin-bottom: 10vh;*/
+	height: 5vh;
+	width: 20vh;
+	text-align: center;
+	font-size: 15px;
 }
 
 #tamaBody {
 	height: 60vh;
 	width: 50vh;
-	border-radius: 30%;
+	border-radius: 35%;
 	background-color: purple;
+	background-image: url("../tama-sprites/galaxy.jpg");
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
+	border: 3px solid purple;
 }
 
 #screen {
 	height: 30vh;
 	width: 30vh;
-	background-color: lightyellow;
+	background-color: white;
 	display: flex;
 	flex-direction: column;
+	border: 5px solid purple;
 }
 
 #display {
@@ -43,7 +50,8 @@ input {
 #uiRow {
 	height: 5vh;
 	width: 30vh;
-	background-color: green;
+	background-color: gray;
+	opacity: 25%;
 	display: flex;
 	align-items: flex-end;
 	justify-content: space-around;
@@ -53,7 +61,7 @@ input {
 	height: 5vh;
 	width: 25vh;
 	/*background-color: green;*/
-	margin-top: 5vh;
+	margin-top: 3vh;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
@@ -64,6 +72,7 @@ input {
 	width: 5vh;
 	background-color: yellow;
 	border-radius: 40%;
+	border: 2px solid purple;
 }
 
 h1 {
@@ -86,9 +95,40 @@ h3 {
 }
 
 #logo {
-	width: 40vh;
+	width: 30vh;
+	margin-top: 5vh;
+	margin-bottom: 3vh;
+
+	/*border: 2px solid yellow;*/
 }
 
+#submit-btn {
+	width: 15vh;
+	margin-bottom: 8vh;
+	font-weight: bold;
+	background-color: purple;
+	color: black;
+	border-color: gray;
+}
+
+#submit {
+	width: 25vh;
+	margin-bottom: 1vh;
+	background-color: lightgray;
+	border-color: gray;
+}
+
+
+#deathText {
+	text-align: center;
+}
+
+form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
 
 
 
