@@ -57,6 +57,7 @@ class Tamagotchi {
 		if (this.hunger === 10 || this.sleepiness === 10 || this.boredom === 10) {
 			$('#sprite').remove();
 			$('#display').prepend($deathText);
+			$('#deathText').velocity("transition.expandIn", 1000)
 			clearInterval(game.timer);
 			this.isDead = true;
 		}

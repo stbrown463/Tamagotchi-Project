@@ -17,13 +17,14 @@ input {
 	height: 5vh;
 	text-align: center;
 	border-radius: 6px;
+	font-family: 'Helvetica', sans-serif;
 }
 
 
 
 #tamaBody {
 	height: 60vh;
-	width: 50vh;
+	width: 47vh;
 	border-radius: 35%;
 	background-color: purple;
 	background-image: url("../tama-sprites/galaxy.jpg");
@@ -130,8 +131,8 @@ h3 {
 
 #deathText {
 	text-align: center;
-	font-family: "tamaDigital", truetype ;
-	font-size: 20px;
+	font-family: "tamaDigital", truetype;
+	font-size: 18px;
 	width: 30vh;
 }
 
