@@ -64,6 +64,10 @@ input {
 	justify-content: space-around;
 }
 
+.uiDisp {
+	opacity: 0;
+}
+
 #buttonRow {
 	height: 5vh;
 	width: 25vh;
@@ -93,7 +97,6 @@ h2 {
 h3 {
 	font-size: 12px;
 	text-align: center;
-	margin: 2px;
 	font-family: "Helvetica", sans-serif;
 }
 
@@ -106,8 +109,6 @@ h3 {
 	width: 30vh;
 	margin-top: 5vh;
 	margin-bottom: 3vh;
-
-	/*border: 2px solid yellow;*/
 }
 
 #submit-btn {

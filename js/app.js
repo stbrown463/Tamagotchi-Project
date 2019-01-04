@@ -68,22 +68,15 @@ class Tamagotchi {
 const game = {
 	pet: null,
 	init () {
-		const $hungerDisp = $('<h3 id="hungerDisp"></h3>')
-		$uiRow.append($hungerDisp);
-		const $sleepinessDisp = $('<h3 id="sleepinessDisp"></h3>')
-		$uiRow.append($sleepinessDisp);
-		const $boredomDisp = $('<h3 id="boredomDisp"></h3>')
-		$uiRow.append($boredomDisp);
-		const $ageDisp = $('<h3 id="ageDisp"></h3>')
-		$uiRow.append($ageDisp);
+		$('.uiDisp').css('opacity', 1);
 		$('#display').append('<img src="tama-sprites/Babytchi_anim_gen1.gif" id="sprite">');	
 		this.render();
 	}, 
 	render () {
-		$('#hungerDisp').text(`Hunger ${this.pet.hunger}`);
-		$('#sleepinessDisp').text(`Sleepiness ${this.pet.sleepiness}`);
-		$('#boredomDisp').text(`Boredom ${this.pet.boredom}`);
-		$('#ageDisp').text(`Age ${this.pet.age}`);		
+		$('#hungerDisp').html(`Hunger<br>${this.pet.hunger}`);
+		$('#sleepinessDisp').html(`Fatigue<br>${this.pet.sleepiness}`);
+		$('#boredomDisp').html(`Boredom<br>${this.pet.boredom}`);
+		$('#ageDisp').html(`Age<br>${this.pet.age}`);		
 	},
 	startTimer () {
 		this.timer = setInterval(() => {
@@ -145,10 +138,6 @@ const game = {
 	},
 	reset () {
 		$('#deathText').remove();
-		$('#hungerDisp').remove();
-		$('#boredomDisp').remove();
-		$('#ageDisp').remove();
-		$('#sleepinessDisp').remove();
 		$('#sprite').remove();
 	}
 
