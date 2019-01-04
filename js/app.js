@@ -82,7 +82,7 @@ const game = {
 		this.timer = setInterval(() => {
 			game.pet.birthday()
 
-		}, 1000);
+		}, 1500);
 	},
 	changeSprite () {
 		if (this.pet.age === 5) {
@@ -101,7 +101,7 @@ const game = {
 					$('#sprite').attr('src', 'tama-sprites/Tarakotchi_anim_gen1.gif')
 				} else if (this.pet.hunger > 7 || this.pet.sleepiness > 7 || this.pet.boredom > 7) {
 					$('#sprite').attr('src', 'tama-sprites/Nyorotchi_anim_gen1.gif');
-				} else if (this.pet.hunger > 5 || this.pet.sleepiness > 5 || this.pet.boredom > 5) {
+				} else if (this.pet.hunger > 6 || this.pet.sleepiness > 6 || this.pet.boredom > 6) {
 					$('#sprite').attr('src', 'tama-sprites/Kuchipatchi_anim_gen1.gif');
 				} else if (this.pet.hunger > 4 || this.pet.sleepiness > 4 || this.pet.boredom > 4) {
 					$('#sprite').attr('src', 'tama-sprites/Maskutchi_anim_gen1.gif');
@@ -120,7 +120,7 @@ const game = {
 					$('#sprite').attr('src', 'tama-sprites/Kuchipatchi_anim_gen1.gif');
 				}
 			}
-		} if (this.pet.age === 100) {
+		} if (this.pet.age === 60) {
 			$('#sprite').attr('src', 'tama-sprites/Bill_anim_gen1.gif');
 		}
 	},
